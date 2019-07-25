@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Mainroad</title>
-    <link>/categories/hugo/</link>
+    <link>/site/categories/hugo/</link>
     <description>Recent content in Hugo on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
     <lastBuildDate>Wed, 02 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/site/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo &#43; Firebase</title>
-      <link>/post/hugo-firebase/</link>
+      <link>/site/post/hugo-firebase/</link>
       <pubDate>Wed, 02 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/hugo-firebase/</guid>
+      <guid>/site/post/hugo-firebase/</guid>
       <description>Эта статья поможет вам быстро и бесплатно создать веб-сайт для размещения портфолио, резюме или блога.
 Учётная запись Google Для размещения сайта нам потребуется учетная запись Google. Если у вас есть почта на Gmail, значит она у вас есть. Если нет, создайте учётную запись.
 Домен Это необязательно. В мире существуют разные провайдеры доменных имен, найти можно тут Google.

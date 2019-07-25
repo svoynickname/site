@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>development on Mainroad</title>
-    <link>/tags/development/</link>
+    <link>/site/tags/development/</link>
     <description>Recent content in development on Mainroad</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru-ru</language>
     <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/site/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>(Hu)go Template Primer</title>
-      <link>/post/goisforlovers/</link>
+      <link>/site/post/goisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/post/goisforlovers/</guid>
+      <guid>/site/post/goisforlovers/</guid>
       <description>&lt;p&gt;Hugo uses the excellent &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; &lt;a href=&#34;https://golang.org/pkg/html/template/&#34;&gt;html/template&lt;/a&gt; library for
 its template engine. It is an extremely lightweight engine that provides a very
 small amount of logic. In our experience that it is just the right amount of
@@ -27,10 +27,10 @@ similarities in Go templates.&lt;/p&gt;</description>
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>/post/hugoisforlovers/</link>
+      <link>/site/post/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>/post/hugoisforlovers/</guid>
+      <guid>/site/post/hugoisforlovers/</guid>
       <description>## [Go by Example](./): Range    _range_ iterates over elements in a variety of data structures. Let’s see how to use `range` with some of the data structures we’ve already learned.      [![](play.png &#34;Run code&#34;)](http://play.golang.org/p/SkL_AS-1Jd) package main   
 
 
