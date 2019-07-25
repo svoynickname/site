@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru-ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hugo &#43; Firebase</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Hugo &#43; Firebase">
+	<meta name="generator" content="Hugo 0.55.6" />
+	<meta property="og:title" content="Hugo &#43; Firebase" />
+<meta property="og:description" content="Hugo &#43; Firebase" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/hugo-firebase/" />
+<meta property="article:published_time" content="2019-01-02T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-01-02T00:00:00&#43;00:00"/>
+
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/css/syntax.css">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Mainroad" rel="home">
+                <img class="site-logo" src="/img/fg9.png" alt="" />
+
+			
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/post/migrate-from-jekyll/">Jekyll migration</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/goisforlovers/">(Hu)go Template Primer</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">About Hugo</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Hugo &#43; Firebase</h1>
+			<div class="post__meta meta">
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 16 16"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+	<time class="meta__text" datetime="2019-01-02T00:00:00">January 02, 2019</time>
+</div>
+
+<div class="meta__item-categories meta__item">
+	<svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+	<span class="meta__text"><a class="meta__link" href="/categories/development" rel="category">Development</a>, <a class="meta__link" href="/categories/hugo" rel="category">Hugo</a></span>
+</div>
+</div>
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#учётная-запись-google">Учётная запись Google</a></li>
+<li><a href="#домен">Домен</a></li>
+<li><a href="#генератор-статических-сайтов-hugo">Генератор статических сайтов Hugo</a></li>
+<li><a href="#firebase">Firebase</a></li>
+<li><a href="#node-js">Node.js</a>
+<ul>
+<li><a href="#шаг-1-установите-hugo-на-свой-компьютер">Шаг 1: Установите Hugo на свой компьютер</a></li>
+<li><a href="#шаг-2-создайте-шаблон-сайта">Шаг 2: Создайте шаблон сайта</a></li>
+<li><a href="#шаг-3-установите-тему-для-сайта">Шаг 3: Установите тему для сайта</a></li>
+<li><a href="#шаг-4-настройте-ваши-предпочтения">Шаг 4: Настройте ваши предпочтения</a></li>
+<li><a href="#шаг-5-настройте-проект-хостинга-firebase">Шаг 5: Настройте проект хостинга Firebase</a></li>
+<li><a href="#шаг-6-настройте-инструменты-firebase-на-своем-компьютере">Шаг 6: Настройте инструменты Firebase на своем компьютере</a></li>
+<li><a href="#шаг-7-проверьте-свой-сайт-локально">Шаг 7: Проверьте свой сайт локально</a></li>
+<li><a href="#шаг-8-разверните-свой-сайт">Шаг 8: Разверните свой сайт</a></li>
+<li><a href="#шаг-9-подключите-его-к-своему-домену-необязательно">Шаг 9: подключите его к своему домену (необязательно)</a></li>
+<li><a href="#шаг-10-создать-блог">Шаг 10: Создать блог</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<p>Эта статья поможет вам быстро и бесплатно создать веб-сайт для размещения портфолио, резюме или блога.</p>
+
+<h3 id="учётная-запись-google">Учётная запись Google</h3>
+
+<p>Для размещения сайта нам потребуется учетная запись Google. Если у вас есть почта на Gmail, значит она у вас есть. Если нет, создайте учётную запись.</p>
+
+<h3 id="домен">Домен</h3>
+
+<p>Это необязательно. В мире существуют разные провайдеры доменных имен, найти можно тут <a href="https://www.google.com/search?q=%D0%A0%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F+%D0%B4%D0%BE%D0%BC%D0%B5%D0%BD%D0%B0">Google</a>.</p>
+
+<h3 id="генератор-статических-сайтов-hugo">Генератор статических сайтов Hugo</h3>
+
+<p>Hugo - это инструмент на основе языка Go , который генерирует статические веб-сайты. Вы можете использовать различные шаблоны и создавать разные типы сайтов, такие как блоги, портфолио и т. д.
+Скачайте его <a href="https://github.com/gohugoio/hugo/releases">отсюда</a>.</p>
+
+<h3 id="firebase">Firebase</h3>
+
+<p><a href="http://firebase.com/">Firebase</a> - это платформа для мобильных устройств и веб-приложений, приобретенная Google несколько лет назад. Firebase предлагает хостинг в качестве одной из своих функций. Однако многие разработчики мобильных приложений используют его для аналитики, уведомлений, отчетов о сбоях приложений. Мы буде использовать его для размещения нашего сайта.</p>
+
+<h3 id="node-js">Node.js</h3>
+
+<p>Node.js - это среда выполнения JavaScript с открытым исходным кодом. Его необходимо установить на свой компьютер, чтобы работали инструменты Firebase. Вы можете скачать и установить его <a href="https://nodejs.org/en/download/">здесь</a>.</p>
+
+<h4 id="шаг-1-установите-hugo-на-свой-компьютер">Шаг 1: Установите Hugo на свой компьютер</h4>
+
+<p>Windows: вы получите простой переносимый исполняемый файл. Вы можете разместить его где угодно и запустить через командную строку. Вы можете добавить его к своей переменной пути в переменных среды Windows, чтобы ссылаться на него где угодно.</p>
+
+<p>Mac: вы можете установить его, используя Homebrew. Если у вас не установлен brew, вы можете скачать <a href="https://github.com/gohugoio/hugo/releases">здесь</a> .</p>
+
+<p>В любом случае, убедитесь, что вы можете получить доступ к Hugo, дав команду ниже.</p>
+
+<h4 id="шаг-2-создайте-шаблон-сайта">Шаг 2: Создайте шаблон сайта</h4>
+
+<p>Перейдите к месту, где вы решили создать свой веб-сайт, и введите команду ниже:</p>
+
+<pre><code>$ hugo new site &lt;path_to_folder&gt;
+</code></pre>
+
+<p>В данном месте вы можете увидеть структуру папок, как показано на рисунке ниже.
+Изображение взято на Windows 10</p>
+
+<p><img src="/images/hugo-firebase-folder.jpeg" alt="Hugo + Firebase" />
+Эти папки являются просто заполнителями для вашего контента. Весь текстовый контент вашего сайта попадает в папку содержимого .</p>
+
+<p>Вы можете запустить команды ниже, чтобы добавить новые файлы.</p>
+
+<pre><code>$ hugo new about.md 
+</code></pre>
+
+<p>Если вы хотите добавить запись в блоге, создайте папку с именем «blog» в папке «content» и начните добавлять свои файлы. Эти файлы имеют расширение «.md», которые являются файлами <a href="https://ru.wikipedia.org/wiki/Markdown">Markdown</a> .</p>
+
+<p>Markdown - это язык разметки в формате простого текста. Это красиво и легко. Есть множество руководств о Markdown, вот <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">одно</a> из них.</p>
+
+<h4 id="шаг-3-установите-тему-для-сайта">Шаг 3: Установите тему для сайта</h4>
+
+<p>У Hugo отличное сообщество. <a href="https://themes.gohugo.io/">Здесь</a> вы найдете разнообразные темы. Выберите тему, которая соответствует вашим требованиям.</p>
+
+<p>Я выбрал тему <a href="https://github.com/vickylaiio/hugo-theme-introduction">Introduction</a>. Нажав на кнопку загрузки, вы будете перенаправлены на GitHub.</p>
+
+<p>У каждой темы будет свой способ настройки. Эта конкретная тема не имеет много шагов. Просто клонируйте или загрузите zip в папку с темами. Скопируйте файл config.toml в корневую папку вашего сайта.</p>
+
+<h4 id="шаг-4-настройте-ваши-предпочтения">Шаг 4: Настройте ваши предпочтения</h4>
+
+<p>Откройте файл config.toml и начните его редактирование. Укажите свое имя и другие данные, которые вы хотите показать на сайте. Некоторые темы поддерживают Google Analytics, поэтому вы можете отслеживать количество посещений пользователей и т. Д. Вы можете указать свой идентификатор GA для сбора данных.</p>
+
+<h4 id="шаг-5-настройте-проект-хостинга-firebase">Шаг 5: Настройте проект хостинга Firebase</h4>
+
+<p>Как я упоминал ранее, Firebase - это красивая мобильная платформа с множеством функций. Я использовал хостинг Firebase для размещения своего статического сайта, созданного с помощью Hugo.</p>
+
+<p>Для использования сервисов Firebase используйте вашу учетную запись Google и войдите на сайт Firebase .</p>
+
+<p>Нажмите «Перейти к консоли». Создайте проект, дав ему имя. Вам будет показана страница обзора, на которой вы должны выбрать « начало работы на хостинге».</p>
+
+<h4 id="шаг-6-настройте-инструменты-firebase-на-своем-компьютере">Шаг 6: Настройте инструменты Firebase на своем компьютере</h4>
+
+<p>Откройте свой терминал / интерфейс командной строки на своем компьютере и введите команду ниже.</p>
+
+<pre><code>$ npm install -g firebase-tools 
+</code></pre>
+
+<p>Приведенная выше команда устанавливает пакет Firebase-tools. Вам нужно выполнить еще несколько команд, чтобы иметь возможность развернуть ваш сайт напрямую.</p>
+
+<pre><code>$ firebase login 
+</code></pre>
+
+<p>Эта команда соединяет ваш компьютер с проектом Firebase. Это позволяет вам перечислить и выбрать проект, в который вы хотите внести свои изменения.</p>
+
+<pre><code>$ firebase list 
+</code></pre>
+
+<p>Вы можете запустить команду выше, чтобы увидеть проект, который вы создали. В завершение всего рабочего процесса нам нужно инициализировать корневую папку вашего сайта как корневую папку проекта Firebase.</p>
+
+<pre><code>$ firebase init 
+</code></pre>
+
+<p>Он задаст вам несколько вопросов, таких как</p>
+
+<pre><code>Какие функции Firebase CLI вы хотите настроить? Ответ: хостинг.
+Выберите проект Firebase по умолчанию для этого каталога. Ответ: Выберите проект Firebase, созданный на шаге 5.
+Вы хотите использовать в качестве публичного каталога? Ответ: да.
+Настроить как одностраничное приложение? Ответ: да. 
+</code></pre>
+
+<p>Чтобы избежать путаницы, у меня есть подробные скриншоты, сделанные на каждом этапе для вашей справки. Его можно скачать здесь .</p>
+
+<p>В заключение! Инициализация Firebase завершена.</p>
+
+<h4 id="шаг-7-проверьте-свой-сайт-локально">Шаг 7: Проверьте свой сайт локально</h4>
+
+<p>Запустите команду ниже, чтобы проверить ваш сайт локально на вашем компьютере.</p>
+
+<p>$ hugo server -w</p>
+
+<p>Hugo поставляется с легким высокопроизводительным веб-сервером, где вы можете проверить все свои изменения. Убедитесь, что все ваши изображения размещены в папке static / img . В итеративном процессе измените ваш config.toml и проверьте их в браузере. Ниже указан порт, на котором будет работать ваш сервер.</p>
+
+<p><a href="http://localhost:1313">http://localhost:1313</a></p>
+
+<h4 id="шаг-8-разверните-свой-сайт">Шаг 8: Разверните свой сайт</h4>
+
+<p>Введите ниже команду для создания вашего сайта и отправьте его в соответствующий проект Firebase, который вы настроили на шаге 5 .</p>
+
+<pre><code>$ hugo &amp;&amp; firebase deploy 
+</code></pre>
+
+<h4 id="шаг-9-подключите-его-к-своему-домену-необязательно">Шаг 9: подключите его к своему домену (необязательно)</h4>
+
+<p>Firebase предоставляет возможность подключить ваш домен к приложению Firebase. Нажмите на подключить домен и укажите свой домен и добавьте записи TXT, чтобы подтвердить право собственности на домен.</p>
+
+<p>Для этого войдите на портал регистратора вашего домена.</p>
+
+<h4 id="шаг-10-создать-блог">Шаг 10: Создать блог</h4>
+
+<p>Создать пост в блоге довольно просто. Hugo понимает файлы уценки. Просто зайдите в папку content-&gt; blog (расположение папки зависит от темы). Создайте файл уценки. Повторите Шаг 8, чтобы увидеть результаты.</p>
+
+<p>Если у вас есть какие-либо вопросы или сомнения, вы можете написать мне в Twitter !</p>
+
+<p>Всегда рады помочь!</p>
+
+		</div>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16"><path d="M16 9.5c0 .373-.24.74-.5 1l-5 5c-.275.26-.634.5-1 .5-.373 0-.74-.24-1-.5L1 8a2.853 2.853 0 0 1-.7-1C.113 6.55 0 5.973 0 5.6V1.4C0 1.034.134.669.401.401.67.134 1.034 0 1.4 0h4.2c.373 0 .95.113 1.4.3.45.187.732.432 1 .7l7.5 7.502c.26.274.5.632.5.998zM3.5 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/firebase/" rel="tag">Firebase</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/hugo/" rel="tag">Hugo</a></li>
+	</ul>
+</div>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="John Doe avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About John Doe</span>
+	</div>
+	<div class="authorbox__description">
+		John Doe&#39;s true identity is unknown. Maybe he is a successful blogger or writer. Nobody knows it.
+	</div>
+</div>
+
+<nav class="post-nav flex">
+	<div class="post-nav__item post-nav__item--prev">
+		<a class="post-nav__link" href="/post/basic-elements/" rel="prev"><span class="post-nav__caption">«&thinsp;Previous</span><p class="post-nav__post-title">Basic HTML Elements</p></a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Mainroad.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script></body>
+</html>
